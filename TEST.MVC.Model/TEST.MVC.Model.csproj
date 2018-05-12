@@ -49,57 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dept.cs">
-      <DependentUpon>TestMvcDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestMvcDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestMvcDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestMvcDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestMvcDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestMvcDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestMvcDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>TestMvcDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserLog.cs">
-      <DependentUpon>TestMvcDB.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="TestMvcDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TestMvcDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="TestMvcDB.edmx.diagram">
-      <DependentUpon>TestMvcDB.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestMvcDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestMvcDB.edmx</DependentUpon>
-      <LastGenOutput>TestMvcDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="TestMvcDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestMvcDB.edmx</DependentUpon>
-      <LastGenOutput>TestMvcDB.cs</LastGenOutput>
-    </Content>
+    <Content Include="TestMvcDB.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
