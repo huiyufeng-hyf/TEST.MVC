@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using TEST.MVC.Model;
+using TEST.MVC.Model;
 
 namespace TEST.MVC.Test
 {
@@ -12,16 +12,21 @@ namespace TEST.MVC.Test
     {
         static void Main(string[] args)
         {
-            //DbContext dbCxt = new TestMvcDBEntities();
+            TestMvcDBEntities dbCxt = new TestMvcDBEntities();
             //User user = new User
             //{
-            //    Name = "u5test"
+            //    Name = "u11test"
             //};
-            //dbCxt.Set<User>().Add(user);
+            //dbCxt.Users.Add(user);
             //dbCxt.SaveChanges();
 
-            //Console.WriteLine(dbCxt.Set<User>().ToList().Count);
-            //Console.ReadLine();
+            Console.WriteLine(dbCxt.Users.Count());
+
+            User u10 = dbCxt.Users.Where(u => u.Name == "u10test").FirstOrDefault();
+            u10.IsDeleted = false;
+            u10.Modified = DateTime.Now;
+            dbCxt.SaveChanges();
+            Console.ReadLine();
         }
     }
 }
