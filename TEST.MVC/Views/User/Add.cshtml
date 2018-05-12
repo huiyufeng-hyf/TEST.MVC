@@ -1,0 +1,11 @@
+﻿@using TEST.MVC.Model
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+<form action="@Url.Action("Add","User")" method="post">
+    姓名: <input name="Name" />
+    <button type="submit">提交</button>
+</form>
+
