@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[UserLog]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [Operation] NVARCHAR(50) NOT NULL, 
-    [Created] DATETIME NULL, 
+    [Operation] NVARCHAR(50) NULL, 
+    [Created] DATETIME NULL DEFAULT getdate(), 
     [IP] NVARCHAR(50) NULL, 
     [Browser] NVARCHAR(50) NULL, 
     [UserId] INT NOT NULL, 
