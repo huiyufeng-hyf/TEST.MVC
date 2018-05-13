@@ -17,12 +17,14 @@ namespace TEST.MVC.Web.Controllers
             return View();
         }
 
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Add(User user)
         {
-            if (string.IsNullOrEmpty(user.Name))
-            {
-                return View();
-            }
             if (ModelState.IsValid)
             {
                 if (userSvc.Add(user))
