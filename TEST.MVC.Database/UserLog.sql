@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[UserLog] (
     [Id]        INT           IDENTITY (1, 1) NOT NULL,
     [Operation] NVARCHAR (50) NULL,
-    [Created]   DATETIME      NULL,
+    [Created]   DATETIME      NULL DEFAULT getdate(),
     [IP]        NVARCHAR (50) NULL,
     [Browser]   NVARCHAR (50) NULL,
     [UserId]    INT           NOT NULL,
