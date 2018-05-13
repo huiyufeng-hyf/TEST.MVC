@@ -10,5 +10,13 @@ namespace TEST.MVC.DAL
 {
     public partial class UserLogDAL : BaseDAL<UserLog>, IUserLogDAL
     {
+        protected override void SetRequiredFieldOnCreatedNewItem(UserLog item)
+        {
+            if (item.Created == null || item.Created == new DateTime())
+                item.Created = DateTime.Now;
+
+            if (item.UserId < 1)
+                item.UserId = CurrentUserId;
+        }
     }
 }

@@ -44,17 +44,21 @@ namespace TEST.MVC.Test
 
             IUserService userSvc = BLLContainer.Container.Resolve<IUserService>();
             IUserLogService ulSvc = BLLContainer.Container.Resolve<IUserLogService>();
-            User u2 = new User { Name = "u2 test" };
+            User u2 = new User { Name = "u8 test" };
+            //userSvc.Add(u2);
             UserLog ulog = new UserLog
             {
                 Operation = Constants.GetUserLogType(Constants.UserLogType.Add),
                 User = u2
             };
-            if (ulSvc.Add(ulog))
-            {
-                Console.WriteLine(ulSvc.GetModels(u => true).Count());
-            }
-            
+            ulSvc.Add(ulog);
+
+            //User user = userSvc.GetModels(u => u.Id == 3).FirstOrDefault();
+            //user.Created = DateTime.Now;
+            //user.Modified = DateTime.Now;
+            //user.IsDeleted = false;
+            //userSvc.Update(user);
+
 
             Console.ReadLine();
         }

@@ -17,5 +17,20 @@ namespace TEST.MVC.BLL
         {
             Dal = deptDAL;
         }
+
+        //protected override void SetRequiredFieldOnCreatedNewItem(Dept item)
+        //{
+        //    if (item.Created == null || item.Created == new DateTime())
+        //        item.Created = DateTime.Now;
+
+        //    if (item.Modified == null || item.Modified == new DateTime())
+        //        item.Modified = DateTime.Now;
+
+        //    if (item.Author == null || item.Author < 1)
+        //        item.Author = CurrentUserId;
+
+        //    if (item.Editor == null || item.Editor < 1)
+        //        item.Editor = CurrentUserId;
+        //}
     }
 }

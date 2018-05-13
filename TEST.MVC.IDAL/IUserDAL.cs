@@ -9,5 +9,6 @@ namespace TEST.MVC.IDAL
 {
     public partial interface IUserDAL : IBaseDAL<User>
     {
+        void DisplayTest();
     }
 }

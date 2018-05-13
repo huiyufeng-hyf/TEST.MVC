@@ -17,5 +17,14 @@ namespace TEST.MVC.BLL
         {
             Dal = userLogDAL;
         }
+
+        //protected override void SetRequiredFieldOnCreatedNewItem(UserLog item)
+        //{
+        //    if (item.Created == null || item.Created == new DateTime())
+        //        item.Created = DateTime.Now;
+
+        //    if (item.UserId < 1)
+        //        item.UserId = CurrentUserId;
+        //}
     }
 }
