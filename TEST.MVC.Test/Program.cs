@@ -4,6 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TEST.MVC.BLL;
+using TEST.MVC.Common;
+using TEST.MVC.IBLL;
 using TEST.MVC.Model;
 
 namespace TEST.MVC.Test
@@ -12,7 +15,7 @@ namespace TEST.MVC.Test
     {
         static void Main(string[] args)
         {
-            TestMvcDBEntities dbCxt = new TestMvcDBEntities();
+            //TestMvcDBEntities dbCxt = new TestMvcDBEntities();
             //--> to add a new user
             //User user = new User
             //{
@@ -30,14 +33,28 @@ namespace TEST.MVC.Test
             //dbCxt.SaveChanges();
 
             //--> to add user with dept together
-            User u1 = new User { Name = "u1 test" };
+            //User u1 = new User { Name = "u1 test" };
+            //User u2 = new User { Name = "u2 test" };
+            //Dept d1 = new Dept { Name = "d1" };
+            //d1.User.Add(u1);
+            //d1.User.Add(u2);
+            //dbCxt.Dept.Add(d1);
+            //dbCxt.SaveChanges();
+            //Console.WriteLine(dbCxt.Dept.FirstOrDefault().User.Count);
+
+            IUserService userSvc = BLLContainer.Container.Resolve<IUserService>();
+            IUserLogService ulSvc = BLLContainer.Container.Resolve<IUserLogService>();
             User u2 = new User { Name = "u2 test" };
-            Dept d1 = new Dept { Name = "d1" };
-            d1.User.Add(u1);
-            d1.User.Add(u2);
-            dbCxt.Dept.Add(d1);
-            dbCxt.SaveChanges();
-            Console.WriteLine(dbCxt.Dept.FirstOrDefault().User.Count);
+            UserLog ulog = new UserLog
+            {
+                Operation = Constants.GetUserLogType(Constants.UserLogType.Add),
+                User = u2
+            };
+            if (ulSvc.Add(ulog))
+            {
+                Console.WriteLine(ulSvc.GetModels(u => true).Count());
+            }
+            
 
             Console.ReadLine();
         }

@@ -34,6 +34,8 @@ namespace TEST.MVC.DALContainer
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<UserDAL>().As<IUserDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<DeptDAL>().As<IDeptDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<UserLogDAL>().As<IUserLogDAL>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

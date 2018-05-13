@@ -34,6 +34,8 @@ namespace TEST.MVC.BLLContainer
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<DeptService>().As<IDeptService>().InstancePerLifetimeScope();
+            builder.RegisterType<UserLogService>().As<IUserLogService>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

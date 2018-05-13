@@ -57,6 +57,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TEST.MVC.BLLContainer\TEST.MVC.BLLContainer.csproj">
+      <Project>{72a9a482-bd59-4cfa-a1f3-cab074872356}</Project>
+      <Name>TEST.MVC.BLLContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEST.MVC.BLL\TEST.MVC.BLL.csproj">
+      <Project>{FB91D459-75B6-46A7-9D73-CD9ADE8A91D5}</Project>
+      <Name>TEST.MVC.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEST.MVC.Common\TEST.MVC.Common.csproj">
+      <Project>{0A3C4FD6-D76F-48C4-A453-EA8877F598E4}</Project>
+      <Name>TEST.MVC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEST.MVC.IBLL\TEST.MVC.IBLL.csproj">
+      <Project>{A8D43710-9F0F-446C-BB6D-62BE1A20E097}</Project>
+      <Name>TEST.MVC.IBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TEST.MVC.Model\TEST.MVC.Model.csproj">
       <Project>{725C9094-2118-4A30-86E5-BA87590373FF}</Project>
       <Name>TEST.MVC.Model</Name>

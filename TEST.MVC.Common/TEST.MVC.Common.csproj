@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A8D43710-9F0F-446C-BB6D-62BE1A20E097}</ProjectGuid>
+    <ProjectGuid>{0A3C4FD6-D76F-48C4-A453-EA8877F598E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TEST.MVC.IBLL</RootNamespace>
-    <AssemblyName>TEST.MVC.IBLL</AssemblyName>
+    <RootNamespace>TEST.MVC.Common</RootNamespace>
+    <AssemblyName>TEST.MVC.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,17 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBaseService.cs" />
-    <Compile Include="IDeptService.cs" />
-    <Compile Include="IUserLogService.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TEST.MVC.Model\TEST.MVC.Model.csproj">
-      <Project>{725C9094-2118-4A30-86E5-BA87590373FF}</Project>
-      <Name>TEST.MVC.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
