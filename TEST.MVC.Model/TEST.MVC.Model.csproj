@@ -74,6 +74,9 @@
     <Compile Include="UserLog.cs">
       <DependentUpon>TestMvcDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_User_Log.cs">
+      <DependentUpon>TestMvcDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

@@ -4,105 +4,129 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TEST.MVC.DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="TESTMVCDBModelStoreContainer">
-    <EntitySet Name="Dept" EntityType="TEST.MVC.DBModel.Store.Dept" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="User" EntityType="TEST.MVC.DBModel.Store.User" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserLog" EntityType="TEST.MVC.DBModel.Store.UserLog" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DeptUser" EntityType="TEST.MVC.DBModel.Store.DeptUser" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_UserLog_User" Association="TEST.MVC.DBModel.Store.FK_UserLog_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="UserLog" EntitySet="UserLog" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DeptUser_Dept" Association="TEST.MVC.DBModel.Store.FK_DeptUser_Dept">
-      <End Role="Dept" EntitySet="Dept" />
-      <End Role="DeptUser" EntitySet="DeptUser" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DeptUser_User" Association="TEST.MVC.DBModel.Store.FK_DeptUser_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="DeptUser" EntitySet="DeptUser" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Dept">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Created" Type="datetime" Nullable="true" />
-    <Property Name="Author" Type="int" Nullable="true" />
-    <Property Name="Modified" Type="datetime" Nullable="true" />
-    <Property Name="Editor" Type="int" Nullable="true" />
-    <Property Name="IsDeleted" Type="bit" Nullable="true" />
-  </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Created" Type="datetime" Nullable="true" />
-    <Property Name="Author" Type="int" Nullable="true" />
-    <Property Name="Modified" Type="datetime" Nullable="true" />
-    <Property Name="Editor" Type="int" Nullable="true" />
-    <Property Name="IsDeleted" Type="bit" Nullable="true" />
-  </EntityType>
-  <EntityType Name="UserLog">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Operation" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Created" Type="datetime" Nullable="true" />
-    <Property Name="IP" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Browser" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="UserId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="DeptUser">
-    <Key>
-      <PropertyRef Name="Dept_Id" />
-      <PropertyRef Name="User_Id" />
-    </Key>
-    <Property Name="Dept_Id" Type="int" Nullable="false" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_UserLog_User">
-    <End Role="User" Type="TEST.MVC.DBModel.Store.User" Multiplicity="1" />
-    <End Role="UserLog" Type="TEST.MVC.DBModel.Store.UserLog" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserLog">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DeptUser_Dept">
-    <End Role="Dept" Type="TEST.MVC.DBModel.Store.Dept" Multiplicity="1" />
-    <End Role="DeptUser" Type="TEST.MVC.DBModel.Store.DeptUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Dept">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DeptUser">
-        <PropertyRef Name="Dept_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DeptUser_User">
-    <End Role="DeptUser" Type="TEST.MVC.DBModel.Store.DeptUser" Multiplicity="*" />
-    <End Role="User" Type="TEST.MVC.DBModel.Store.User" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DeptUser">
-        <PropertyRef Name="User_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="TEST.MVC.DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Author" Type="int" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="Editor" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="DeptUser">
+          <Key>
+            <PropertyRef Name="Dept_Id" />
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="Dept_Id" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Author" Type="int" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="Editor" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TEST.MVC.DB.dbo.v_User_Log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_User_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_DeptUser_Dept">
+          <End Role="Dept" Type="Self.Dept" Multiplicity="1" />
+          <End Role="DeptUser" Type="Self.DeptUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dept">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeptUser">
+              <PropertyRef Name="Dept_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeptUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="DeptUser" Type="Self.DeptUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeptUser">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLog_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserLog" Type="Self.UserLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TESTMVCDBModelStoreContainer">
+          <EntitySet Name="Dept" EntityType="Self.Dept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeptUser" EntityType="Self.DeptUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLog" EntityType="Self.UserLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_User_Log" EntityType="Self.v_User_Log" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_User_Log].[Id] AS [Id], 
+    [v_User_Log].[Name] AS [Name], 
+    [v_User_Log].[Operation] AS [Operation], 
+    [v_User_Log].[IP] AS [IP], 
+    [v_User_Log].[Browser] AS [Browser], 
+    [v_User_Log].[Created] AS [Created]
+    FROM [dbo].[v_User_Log] AS [v_User_Log]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DeptUser_Dept" Association="Self.FK_DeptUser_Dept">
+            <End Role="Dept" EntitySet="Dept" />
+            <End Role="DeptUser" EntitySet="DeptUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeptUser_User" Association="Self.FK_DeptUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="DeptUser" EntitySet="DeptUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLog_User" Association="Self.FK_UserLog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserLog" EntitySet="UserLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TEST.MVC.DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -169,11 +193,24 @@
             <End Role="Dept" EntitySet="Dept" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <EntitySet Name="v_User_Log" EntityType="TEST.MVC.DBModel.v_User_Log" />
         </EntityContainer>
         <Association Name="DeptUser">
           <End Type="TEST.MVC.DBModel.Dept" Role="Dept" Multiplicity="*" />
           <End Type="TEST.MVC.DBModel.User" Role="User" Multiplicity="*" />
         </Association>
+        <EntityType Name="v_User_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Operation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -226,6 +263,18 @@
         <ScalarProperty Name="Id" ColumnName="User_Id" />
       </EndProperty>
     </AssociationSetMapping>
+          <EntitySetMapping Name="v_User_Log">
+            <EntityTypeMapping TypeName="TEST.MVC.DBModel.v_User_Log">
+              <MappingFragment StoreEntitySet="v_User_Log">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

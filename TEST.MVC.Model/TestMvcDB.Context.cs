@@ -28,5 +28,6 @@ namespace TEST.MVC.Model
         public virtual DbSet<Dept> Dept { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserLog> UserLog { get; set; }
+        public virtual DbSet<v_User_Log> v_User_Log { get; set; }
     }
 }
